@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DETRAN</title>
+    <style>
+        * {
+            padding: 10px;
+            margin: 8px;
+        }
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+        }
+        .mouvi {
+            color: whitesmoke;
+            border: 2px solid whitesmoke;
+            padding: 20px;
+            margin: auto;
+        }
+        .res {
+            font-weight: bold;
+            font-size: 30px;
+            color: black;
+        }
+        .resborn {
+            font-weight: bolder;
+            font-size: 40px;
+        }
+        .h1 {
+            font-size: 60px;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>Sistema de Multas</h1>
+        Velocidade do carro: <input type="number" name="vel" class="nord">
+        <input type="button" value="Verificar" onclick="calcular()">
+        <div class="res">
+
+        </div>
+        <div class="resborn">
+
+        </div>
+    </main>
+    <script>
+        function calcular() {
+            var txtvel = window.document.querySelector("input.nord")
+            var res = document.querySelector('div.res')
+            var vel = Number(txtvel.value)
+            res.innerHTML = `Sua velocidade no momento é ${vel}`
+            var resborn = document.querySelector("div.resborn")
+            if (vel >= 100) {
+                resborn.innerHTML = `<h1 style="color: red;" class="h1">VELOCIDADE ULTRAPASSADA! *MULTADO!!!*</h1>`
+            } 
+            else {
+                resborn.innerHTML = `<h1 style="color: green;" class="h1">A velocidade não foi ultrapassada.</h1>`
+            }
+        }
+    </script>
+</body>
+</html>
