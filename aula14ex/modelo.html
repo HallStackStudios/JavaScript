@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador</title>
+    <style>
+        body {
+            background-color: #507dbc;
+            height: 100%;
+            width: 100%;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        main {
+            background-color: whitesmoke;
+            width: 50%;
+            height: auto;
+            margin: auto;
+            border-radius: 14px;
+            padding: 20px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        .box-centry {
+            margin: 10px 0;
+        }
+        .input-geral {
+            width: 50px;
+            border: solid 1px #ccc;
+            border-radius: 5px;
+            text-align: center;
+            padding: 5px;
+        }
+        #res {
+            margin-top: 10px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body> 
+    <main>
+        <header><h1 style="font-weight: normal;">Contagem de Números</h1></header>
+        <div class="box-centry">
+            <label for="comeco">Início:</label>
+            <input type="number" id="ip-comeco" class="input-geral">
+        </div>
+        <div class="box-centry">
+            <label for="final">Fim:</label>
+            <input type="number" id="ip-final" class="input-geral">
+        </div>
+        <div class="box-centry">
+            <label for="passo">Passo:</label>
+            <input type="number" id="ip-passo" class="input-geral">
+        </div>
+        <div style="margin-top: 10px;">
+            <input type="button" value="Contar" onclick="contar()">
+        </div>
+        <div id="res">
+            <br>
+            Processando contagem...
+        </div>
+    </main>
+    <script>
+        function contar() {
+            var comeco = document.getElementById('ip-comeco').value;
+            var final = document.getElementById('ip-final').value;
+            var passo = document.getElementById('ip-passo').value;
+            var res = document.getElementById('res');
+
+            if (comeco === "" || final === "" || passo === "" || passo == 0) {
+                res.innerHTML = "Por favor, insira valores válidos!";
+                return;
+            }
+
+            comeco = Number(comeco);
+            final = Number(final);
+            passo = Number(passo);
+            res.innerHTML = "Contando: <br>";
+
+            if (comeco < final) {
+                // Contagem crescente
+                for (let i = comeco; i <= final; i += passo) {
+                    res.innerHTML += `${i} ➡ `;
+                }
+            } else {
+                // Contagem decrescente
+                for (let i = comeco; i >= final; i -= passo) {
+                    res.innerHTML += `${i} ➡ `;
+                }
+            }
+
+            res.innerHTML += "🏁";
+        }
+    </script>
+</body>
+</html>
